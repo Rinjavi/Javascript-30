@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference Copying</title>
+</head>
+<body>
+    <script>
+        let age = 100;
+        let age2 = age;
+        console.log(age, age2); // this shows 100 & 100 
+        age = 200;
+        console.log(age, age2); // this shows 200 & 100 
+
+        let name = 'Rintaro';
+        let name2 = name; 
+        console.log(name, name2); // this shows Two Rintaros
+        name = "Wiz";
+        console.log(name, name2); // this shows Wiz and Rintaro 
+
+        const players = ['wes', 'Sarah', 'Ryan', 'Poppy'];
+/* 
+        console.log(players);
+        const team = players;
+        console.log(team);
+        team[3] = 'Lux';
+        console.log(players, team); // this changes the original array's value as well... 
+*/
+        //Then take a copy instead!!!
+
+        const team2 = players.slice();
+        team2[3] = 'Lux';
+
+        const team5 = Array.from(players);
+        console.log(team5);
+        team5[3] = 'Who?';
+        console.log(players, team5);
+
+
+        // Object pattern ... 
+        const person = {
+            name: 'wes Bob',
+            age: 90
+        };
+
+        const captain = person; 
+        console.log(captain);
+
+        const cap2 = Object.assign({}, person, {age: 90});
+        console.log(cap2);
+        cap2.name = 'Rin';
+        console.log(person, cap2);
+    </script>
+</body>
+</html>
